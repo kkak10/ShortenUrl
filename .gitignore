@@ -31,4 +31,7 @@ node_modules
 # Webstorm Setting folder
 .idea
 
+# Bower folder
+public/vender
+
 

@@ -1,10 +1,26 @@
-@import "compass/css3";
+@import "common/common";
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+#hu_header {
+  height: $header_nav_height;
+  border-bottom: 1px solid $gray;
+  overflow: hidden;
+
+  .main_shroten_input{
+    display: block;
+    width: 100%;
+    height: $header_nav_height;
+    border: 0;
+      &:focus{
+        outline: 0;
+      }
+  }
 }
 
-a {
-  color: #00B7FF;
+.hu_content_area {
+  .main_title{
+    text-align: center;
+    font-weight: 100;
+    font-size: 3em;
+  }
 }
+

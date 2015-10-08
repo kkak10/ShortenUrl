@@ -1,0 +1,22 @@
+{
+  "name": "shorten_url",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kkak10/ShortenUrl",
+  "authors": [
+    "LeeHanUr <kkak1072@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vender",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "normalize.css#~3.0.3",
+    "jquery": "1.11.2",
+    "underscore": "~1.8.3"
+  }
+}

@@ -1,0 +1,21 @@
+body {
+  font-family: 'RixSGo L'; }
+
+#hu_header {
+  height: 46px;
+  border-bottom: 1px solid #dbdbdb;
+  overflow: hidden; }
+  #hu_header .main_shroten_input {
+    display: block;
+    width: 100%;
+    height: 46px;
+    border: 0; }
+    #hu_header .main_shroten_input:focus {
+      outline: 0; }
+
+.hu_content_area .main_title {
+  text-align: center;
+  font-weight: 100;
+  font-size: 3em; }
+
+/*# sourceMappingURL=style.css.map */
