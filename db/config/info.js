@@ -1,5 +1,5 @@
 var info = {
-  "url": "localhost:3306",
+  "db": "shorten_url",
   "id": "shorten_url",
   "password": "shorten_url"
 };
