@@ -20,5 +20,17 @@ commonUtil.jsonConcat = function(o1, o2) {
   return o3;
 };
 
+commonUtil.base64_encode = function(str){
+  var b = new Buffer(str.toString());
+
+  return b.toString('base64');
+};
+
+commonUtil.base64_decode = function(str){
+  var encode_type = "base64",
+      b = new Buffer(str, encode_type);
+
+  return b.toString();
+};
 
 module.exports = commonUtil;
