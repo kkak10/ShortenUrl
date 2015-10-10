@@ -4,11 +4,21 @@ var express = require('express'),
     commonUtil = require("../util/common"),
     router = express.Router();
 
-router.get("/", goToUrl);
+router.get("/:s_url", goToUrl);
 router.post('/', getsUrl);
 
 function goToUrl(req, res, next){
+  var s_url = req.params.s_url,
+      protocolArr = ["http://", "https://"];
 
+  if(protocolArr.indexOf(s_url) === -1){
+    s_url = "http://" + s_url;
+  }
+
+  res.redirect(301, s_url);
+  //
+  //sUrlService.getlUrl(s_url).then(function(l_url){
+  //})
 }
 
 function getsUrl(req, res, next) {

@@ -2,7 +2,8 @@
 (function(){
   var constObj = {
         "enter_keycode": 13,
-        "getsUrl_call": "/s"
+        "getsUrl_call": "/s",
+        "host_name": window.location.host + "/s/"
       },
       domCache = {},
       pageFunctions = {};
@@ -15,12 +16,13 @@
         "l_url": l_url
       }
     }).then(function(data){
-      console.dir(data);
+      domCache.$s_url_area.html(constObj.host_name + data.s_url);
     });
   };
 
   $(document).ready(function(){
     domCache.$main_shroten_input = $(".main_shroten_input");
+    domCache.$s_url_area = $(".s_url_area");
 
     domCache.$main_shroten_input.on("keyup", function(event){
       var keycode = event.keyCode;

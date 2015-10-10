@@ -15,7 +15,7 @@ sUrlService.getsUrl = function(l_url){
 
     check_url_promise.then(function(data){
       if (data) {
-        resolve(data.s_url);
+        resolve(data);
       } else {
         var top_ids_promise = self.topUrlId();
 
@@ -27,6 +27,30 @@ sUrlService.getsUrl = function(l_url){
     }, function(error){
       reject(error);
     });
+  });
+
+  return promise;
+};
+
+/**
+ * s_url로 l_url을 가져오는 메서드.
+ * @param s_url - 조회할 s_url
+ * @return {promise} - l_url이 담긴 promise 객체.
+ */
+sUrlService.getlUrl = function(s_url){
+  var promise = new Promise(function(resolve, reject){
+    sUrlModel.findOne({
+      "attributes": [
+        "l_url"
+      ],
+      "where": {
+        "s_url": s_url
+      }
+    }).then(function(data){
+      resolve(data.l_url);
+    }, function(error){
+      reject(error);
+    })
   });
 
   return promise;
@@ -48,7 +72,7 @@ sUrlService.checkUrl = function(l_url){
       if (urlData) {
         resolve(urlData.s_url)
       } else {
-        reject()
+        resolve()
       }
     }).catch(function(error){
       reject(error);
