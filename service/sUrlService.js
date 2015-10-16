@@ -22,7 +22,9 @@ sUrlService.getsUrl = function(l_url){
         top_ids_promise.then(function(increate_id){
           var base64_id = self.insertSurl(l_url, increate_id);
           resolve(base64_id);
-        })
+        }).catch(function(error){
+          console.error(error);
+        });
       }
     }, function(error){
       reject(error);
@@ -39,14 +41,9 @@ sUrlService.getsUrl = function(l_url){
  */
 sUrlService.getlUrl = function(s_url){
   var promise = new Promise(function(resolve, reject){
-    sUrlModel.findOne({
-      "attributes": [
-        "l_url"
-      ],
-      "where": {
-        "s_url": s_url
-      }
-    }).then(function(data){
+    sUrlModel.scope({
+      "method": ["getlUrl", s_url]
+    }).findOne().then(function(data){
       resolve(data.l_url);
     }, function(error){
       reject(error);
@@ -63,16 +60,11 @@ sUrlService.getlUrl = function(s_url){
  */
 sUrlService.checkUrl = function(l_url){
   var promise = new Promise(function(resolve, reject){
-    sUrlModel.findOne({
-      "attributes": "s_url",
-      "where": {
-        "l_url": l_url
-      }
-    }).then(function(urlData){
+    sUrlModel.scope("checkUrl").findOne().then(function(urlData){
       if (urlData) {
-        resolve(urlData.s_url)
+        resolve(urlData.s_url);
       } else {
-        resolve()
+        resolve(undefined);
       }
     }).catch(function(error){
       reject(error);
@@ -89,14 +81,10 @@ sUrlService.checkUrl = function(l_url){
  */
 sUrlService.topUrlId = function(){
   var promise = new Promise(function(resolve, reject){
-    sUrlModel.findOne({
-      "attributes": ["id"],
-      "order": "id desc",
-      "limit": 1
-    }).then(function(maxIdData){
+    sUrlModel.scope("getTopId").findOne().then(function(maxIdData){
       var increseId;
 
-      if (maxIdData.id) {
+      if (maxIdData) {
         increseId = maxIdData.id + 1;
       } else {
         increseId = 1;

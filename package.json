@@ -17,6 +17,7 @@
     "node-compass": "0.2.3",
     "promise": "^7.0.4",
     "sequelize": "^3.11.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "underscore": "^1.8.3"
   }
 }
